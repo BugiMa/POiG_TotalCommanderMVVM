@@ -1,0 +1,33 @@
+﻿<Window x:Class="TC_MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TC_MVVM"
+        xmlns:viewModel="clr-namespace:TC_MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="TotalCommander" Height="450" Width="600">
+
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <local:PanelTC Grid.Column="0" DataContext="{Binding Left}" />
+        <local:PanelTC Grid.Column="1" DataContext="{Binding Right}" />
+
+        <Button Grid.Row="1" Grid.Column="0" Margin="110,10" Content="{Binding CopyButtonLabelR, Source={StaticResource ResourceKey=StringResources}}" Command="{Binding CopyL}"/>
+        <Button Grid.Row="1" Grid.Column="1" Margin="110,10" Content="{Binding CopyButtonLabelL, Source={StaticResource ResourceKey=StringResources}}" Command="{Binding CopyR}"/>
+
+    </Grid>
+</Window>
